@@ -1,0 +1,12 @@
+.AppBar {
+    height: 60px;
+    position: relative;
+    display: inline-block; 
+}
+
+.NavBar {
+    margin: 0 5px 0 5px;
+    font-size: 30px;
+    color: white;
+    width: 40px;
+}
