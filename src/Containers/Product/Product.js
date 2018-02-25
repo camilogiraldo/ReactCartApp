@@ -9,6 +9,7 @@ import CardText from "material-ui/Card";
 import Button from "material-ui/Button";
 import classes from "./Product.css";
 import axios from "axios";
+import Loader from "../../Components/Loader/Loader";
 class Product extends Component {
   state = {
     loadedProduct: null
@@ -31,16 +32,16 @@ class Product extends Component {
           )
           .then(response => {
             this.setState({ loadedProduct: response.data });
-            console.log(this.state.loadedProduct);
           });
       }
     }
   }
 
   render() {
-      let post= ""
-      if (this.state.loadedProduct) {
-         post =  <Card className={classes.Card}>
+    let post = <Loader />;
+    if (this.state.loadedProduct) {
+      post = (
+        <Card className={classes.Card}>
           <CardMedia>
             <img
               src={
@@ -54,14 +55,15 @@ class Product extends Component {
               alt={this.state.loadedProduct.name}
             />
           </CardMedia>
-  
+
           <CardText>{this.state.loadedProduct.description}</CardText>
           <CardActions>
             <Button>Buy</Button>
             <Button>Share</Button>
           </CardActions>
         </Card>
-      }
+      );
+    }
 
     return post;
   }

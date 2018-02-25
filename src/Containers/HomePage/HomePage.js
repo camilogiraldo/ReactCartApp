@@ -8,10 +8,11 @@ import { Switch, Route } from "react-router-dom";
 import axios from "axios";
 import Login from "../../Components/Login/Login";
 import Signup from "../../Components/Signup/Signup";
+import Loader from "../../Components/Loader/Loader";
 
 class HomePage extends Component {
   state = {
-    products: []
+    products: null
   };
 
   componentDidMount() {
@@ -24,29 +25,28 @@ class HomePage extends Component {
   }
 
   render() {
+    let products = <Loader />;
+
+    if (this.state.products) {
+      products = this.state.products.map(el => {
+        return (
+          <Products
+            productTitle={el.name}
+            productDescription={el.description}
+            productImage={el.images}
+            productName={el.name}
+            productId={el._id}
+            key={el._id}
+          />
+        );
+      });
+    }
     return (
       <div>
         <Navigation />
         <div className={classes.Container}>
           <Switch>
-            <Route
-              path="/"
-              exact
-              render={() =>
-                this.state.products.map(el => {
-                  return (
-                    <Products
-                      productTitle={el.name}
-                      productDescription={el.description}
-                      productImage={el.images}
-                      productName={el.name}
-                      productId={el._id}
-                      key={el._id}
-                    />
-                  );
-                })
-              }
-            />
+            <Route path="/" exact render={() => products} />
             <Route path="/product/:id" exact component={Product} />
             <Route path="/cart" component={Cart} />
             <Route path="/login" component={Login} />
