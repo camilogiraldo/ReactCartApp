@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/ReactCartApp
+    docker:
+      - image: circleci/node:6-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: install-dependencies
+          command: yarn install
+      - save_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+            - ./node_modules
+      - run:
+          name: react-build
+          command: yarn build 
+      - run:
+          name: Use app to firebase
+          command: |
+            ./node_modules/.bin/firebase use react-marketplace --token=$FIREBASE_DEPLOY_TOKEN
+      - run:
+          name: Deploy app to firebase
+          command: |
+            ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
