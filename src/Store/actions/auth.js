@@ -14,11 +14,10 @@ export const loginReq = (email, password) => {
       email: email,
       password: password
     };
-    console.log(authData);
+
     axios
       .post('api/authenticate', authData, httpHeaders)
       .then(response => {
-        console.log(response.data.token);
         dispatch(loginUser(response.data.token));
       })
       .catch(error => {
