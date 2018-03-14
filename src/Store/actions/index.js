@@ -4,5 +4,6 @@ export {
 } from './auth'
 
 export {
-    getProductsReq
+    getProductsReq,
+    getProductByIdReq
 } from './products'

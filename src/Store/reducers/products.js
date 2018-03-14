@@ -1,7 +1,8 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-  products: null
+  products: null,
+  loadedProduct: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,7 +12,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         products: action.products
       };
-
+    case actionTypes.GET_PRODUCT_BY_ID:
+      return {
+        ...state,
+        loadedProduct: action.loadedProduct
+      };
     default:
       return state;
   }
