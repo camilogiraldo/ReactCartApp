@@ -1,21 +1,17 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-  userName: '',
-  token: null
+  products: null
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.LOGIN_USER:
+    case actionTypes.GET_PRODUCTS:
       return {
         ...state,
-        token: action.token
+        products: action.products
       };
-    case actionTypes.SIGNUP_USER:
-      return {
-        ...state
-      };
+
     default:
       return state;
   }

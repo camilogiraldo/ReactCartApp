@@ -14,6 +14,7 @@ class Product extends Component {
   state = {
     loadedProduct: null
   };
+
   componentDidMount() {
     this.loadData();
   }
@@ -31,6 +32,7 @@ class Product extends Component {
               this.props.match.params.id
           )
           .then(response => {
+            console.log(response)
             this.setState({ loadedProduct: response.data });
           });
       }
@@ -46,7 +48,7 @@ class Product extends Component {
             <img
               src={
                 "data:" +
-                this.state.loadedProduct.images.fileType +
+                this.state.loadedProduct.images.filetype +
                 ";base64," +
                 this.state.loadedProduct.images.value
               }

@@ -1,3 +1,8 @@
 export { 
-    loginUser
-} from './actionTypes'
+    loginReq,
+    signupUserReq
+} from './auth'
+
+export {
+    getProductsReq
+} from './products'

@@ -9,10 +9,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import authReducer from './Store/reducers/auth';
-import thunk from "redux-thunk";
+import thunk from 'redux-thunk';
+import productsReducer from './Store/reducers/products';
 
 const rootReducer = combineReducers({
-  auth: authReducer
+  auth: authReducer,
+  products: productsReducer
 });
 
 const composeEnhancers =

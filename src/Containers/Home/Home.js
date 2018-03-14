@@ -5,19 +5,18 @@ import Signup from '../../Components/Signup/Signup';
 import classes from './Home.css';
 import Navigation from '../../Components/Navigation/Navigation';
 import HomePage from '../HomePage/HomePage';
-import Products from '../Products/Products';
+import Product from '../Product/Product';
 import Cart from '../../Components/Cart/Cart';
 
 class Home extends Component {
-  
-    render() {
+  render() {
     return (
       <div>
         <Navigation />
         <div className={classes.Container}>
           <Switch>
             <Route path="/" exact component={HomePage} />
-            <Route path="/product/:id" exact component={Products} />
+            <Route path="/product/:id" exact component={Product} />
             <Route path="/cart" component={Cart} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />

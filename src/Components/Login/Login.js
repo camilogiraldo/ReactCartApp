@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import classes from './Login.css';
 import { Link } from 'react-router-dom';
-import axios from '../../axiosInstance';
+import { connect } from 'react-redux';
+import { loginReq } from '../../Store/actions/index';
 
 class Login extends Component {
   state = {
@@ -18,26 +19,7 @@ class Login extends Component {
 
   loginUser = event => {
     event.preventDefault();
-    console.log(this.state);
-    let httpPostConfig = {
-      httpHeaders: {
-        'Content-type': 'application/json'
-      },
-      body: {
-        email: this.state.email,
-        password: this.state.password
-      }
-    };
-    axios
-      .post('api/authenticate', httpPostConfig.body, httpPostConfig.httpHeaders)
-      .then(data => {
-        console.log(data);
-        //TODO: Save in the local/session storage
-        sessionStorage.setItem('currentUser', data.data.token);
-      })
-      .catch(error => {
-        console.log('an error occurred');
-      });
+    this.props.loginUserReq(this.state.email, this.state.password);
   };
 
   render() {
@@ -71,4 +53,16 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    token: state.auth.token
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loginUserReq: (email, password) => dispatch(loginReq(email, password))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

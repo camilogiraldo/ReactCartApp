@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import classes from './Signup.css';
-import axios from '../../axiosInstance';
+import { signupUserReq } from '../../Store/actions/index';
+import { connect } from 'react-redux';
 
 class Signup extends Component {
   state = {
@@ -19,31 +20,12 @@ class Signup extends Component {
 
   onSubmitHandler = event => {
     event.preventDefault();
-
-    let httpPostConfig = {
-      httpHeaders: {
-        'Content-type': 'application/json'
-      },
-      body: {
-        name: this.state.name,
-        email: this.state.email,
-        password: this.state.password
-      }
+    const signupData = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password
     };
-    console.log(httpPostConfig.body);
-    axios
-      .post(
-        'api/signup',
-        httpPostConfig.body,
-        httpPostConfig.httpHeaders
-      )
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => {
-        console.log(error);
-        console.log('error');
-      });
+    this.props.signupUserReq(signupData);
   };
 
   render() {
@@ -86,4 +68,10 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+const mapDispatchToProps = dispatch => {
+  return {
+    signupUserReq: signupData => dispatch(signupUserReq(signupData))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Signup);
