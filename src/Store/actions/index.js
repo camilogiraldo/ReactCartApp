@@ -1,0 +1,3 @@
+export { 
+    loginUser
+} from './actionTypes'
