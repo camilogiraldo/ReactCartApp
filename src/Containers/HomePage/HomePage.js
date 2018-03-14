@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Products from '../Products/Products';
-import axios from 'axios';
+import axios from '../../axiosInstance';
 import Loader from '../../Components/Loader/Loader';
 
 class HomePage extends Component {
@@ -10,7 +10,7 @@ class HomePage extends Component {
 
   componentDidMount() {
     axios
-      .get('https://stage-bkbackend.herokuapp.com/products')
+      .get('products')
       .then(response => {
         this.setState({ products: response.data });
         console.log(this.state.products);

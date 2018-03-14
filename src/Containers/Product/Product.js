@@ -8,7 +8,7 @@ import CardMedia from "material-ui/Card";
 import CardText from "material-ui/Card";
 import Button from "material-ui/Button";
 import classes from "./Product.css";
-import axios from "axios";
+import axios from "../../axiosInstance";
 import Loader from "../../Components/Loader/Loader";
 class Product extends Component {
   state = {
@@ -27,7 +27,7 @@ class Product extends Component {
       ) {
         axios
           .get(
-            "https://stage-bkbackend.herokuapp.com/products/" +
+            "products/" +
               this.props.match.params.id
           )
           .then(response => {

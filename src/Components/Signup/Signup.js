@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import classes from './Signup.css';
-import axios from 'axios';
+import axios from '../../axiosInstance';
 
 class Signup extends Component {
   state = {
@@ -33,7 +33,7 @@ class Signup extends Component {
     console.log(httpPostConfig.body);
     axios
       .post(
-        'https://stage-bkbackend.herokuapp.com/api/signup',
+        'api/signup',
         httpPostConfig.body,
         httpPostConfig.httpHeaders
       )

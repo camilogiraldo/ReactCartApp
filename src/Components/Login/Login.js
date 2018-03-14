@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './Login.css';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../axiosInstance';
 
 class Login extends Component {
   state = {
@@ -19,17 +19,17 @@ class Login extends Component {
   loginUser = event => {
     event.preventDefault();
     console.log(this.state);
-    let httpPostConfig ={
+    let httpPostConfig = {
       httpHeaders: {
         'Content-type': 'application/json'
       },
       body: {
         email: this.state.email,
         password: this.state.password
-    }
-  } 
+      }
+    };
     axios
-      .post('https://stage-bkbackend.herokuapp.com/api/authenticate', httpPostConfig.body, httpPostConfig.httpHeaders)
+      .post('api/authenticate', httpPostConfig.body, httpPostConfig.httpHeaders)
       .then(data => {
         console.log(data);
         //TODO: Save in the local/session storage
