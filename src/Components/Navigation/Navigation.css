@@ -1,12 +1,8 @@
-.AppBar {
-    height: 60px;
-    position: relative;
-    display: inline-block; 
+.Link {
+    color: white;
+    text-decoration: none !important;
 }
 
-.NavBar {
-    margin: 0 5px 0 5px;
-    font-size: 30px;
-    color: white;
-    width: 40px;
+.Right {
+    float: right !important;
 }

@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 class HomePage extends Component {
   componentDidMount() {
+    //check
     if (!this.props.products) {
       this.props.getProducts();
     }
@@ -24,6 +25,9 @@ class HomePage extends Component {
             productImage={el.images}
             productName={el.name}
             productId={el._id}
+            productcreatedAt={el.createdAt}
+            productValue={el.value}
+            productStatus={el.status}
             key={el._id}
           />
         );

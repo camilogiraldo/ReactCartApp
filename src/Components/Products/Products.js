@@ -1,19 +1,36 @@
 import React from 'react';
-
-import Card from 'material-ui/Card';
-import CardActions from 'material-ui/Card';
-
-import CardMedia from 'material-ui/Card';
-
-import CardText from 'material-ui/Card';
-
-import Button from 'material-ui/Button';
 import classes from './Products.css';
 import { Link } from 'react-router-dom';
+import Chip from 'material-ui/Chip';
+import Card, {
+  CardActions,
+  CardContent,
+  CardMedia,
+  CardHeader
+} from 'material-ui/Card';
+import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
+import Avatar from 'material-ui/Avatar';
+import IconButton from 'material-ui/IconButton';
+import MoreVertIcon from 'material-ui-icons/MoreVert';
 
 const products = props => {
   return (
     <Card className={classes.Card}>
+      <CardHeader
+        avatar={
+          <Avatar aria-label="Recipe" className={classes.avatar}>
+            R
+          </Avatar>
+        }
+        action={
+          <IconButton>
+            <MoreVertIcon />
+          </IconButton>
+        }
+        title={props.productName}
+        subheader={props.productcreatedAt}
+      />
       <Link to={'/product/' + props.productId}>
         <CardMedia>
           <img
@@ -29,11 +46,20 @@ const products = props => {
           />
         </CardMedia>
       </Link>
-
-      <CardText>{props.productDescription}</CardText>
+      <CardContent>
+        <Typography variant="headline" component="h2">
+          {props.productValue}{' '}
+          <Chip label={props.productStatus} className={classes.Right} />
+        </Typography>
+        <Typography component="p">{props.productDescription}</Typography>
+      </CardContent>
       <CardActions>
-        <Button>Buy</Button>
-        <Button>Share</Button>
+        <Button size="small" color="primary">
+          Buy
+        </Button>
+        <Button size="small" color="primary">
+          Share
+        </Button>
       </CardActions>
     </Card>
   );

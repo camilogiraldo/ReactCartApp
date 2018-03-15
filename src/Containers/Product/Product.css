@@ -1,11 +1,11 @@
-.Card{
-    display: inline-block;
+.Card {
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
     margin-top: 10px;
+
     width: 450px;
-    height: 350px;
+  height: 520px;
 }
 
 .Card > img {
@@ -19,4 +19,12 @@
     margin-right: auto;
     width: 400px;
     height: 300px;
+}
+
+.Center {
+    margin: auto;
+    width: 50%;
+}
+.Right {
+    float: right !important;
 }
