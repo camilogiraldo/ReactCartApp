@@ -19,10 +19,31 @@ export const loginReq = (email, password) => {
       .post('api/authenticate', authData, httpHeaders)
       .then(response => {
         dispatch(loginUser(response.data.token));
+        localStorage.setItem('token', response.data.token);
+        dispatch(userLoggedIn());
       })
       .catch(error => {
         console.log(error);
       });
+  };
+};
+
+const userLoggedIn = () => {
+  return {
+    type: actionTypes.USER_LOGGED_IN
+  };
+};
+
+const userLoggedOut = () => {
+  return {
+    type: actionTypes.USER_LOGGED_OUT
+  };
+};
+
+export const userLoggedOutProcess = () => {
+  return dispatch => {
+    localStorage.removeItem('token');
+    dispatch(userLoggedOut());
   };
 };
 
@@ -34,7 +55,7 @@ export const signupUser = () => {
 
 export const signupUserReq = signupData => {
   return dispatch => {
-    console.log(signupData)
+    console.log(signupData);
     axios
       .post('api/signup', signupData, httpHeaders)
       .then(response => {
@@ -44,6 +65,18 @@ export const signupUserReq = signupData => {
       .catch(error => {
         console.log(error);
       });
+  };
+};
+
+export const authCheck = () => {
+  return dispatch => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      dispatch(userLoggedOut);
+    } else {
+      dispatch(loginUser(token));
+      dispatch(userLoggedIn());
+    }
   };
 };
 

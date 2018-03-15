@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loginReq } from '../../Store/actions/index';
 
@@ -20,10 +20,11 @@ class Login extends Component {
   loginUser = event => {
     event.preventDefault();
     this.props.loginUserReq(this.state.email, this.state.password);
+    console.log(this.props);
   };
 
   render() {
-    return (
+    let loginForm = (
       <div className={classes.loginPage}>
         <div className={classes.form}>
           <form className={classes.loginForm} onSubmit={this.loginUser}>
@@ -50,6 +51,11 @@ class Login extends Component {
         </div>
       </div>
     );
+    if (this.props.token) {
+      loginForm = <Redirect to="/" />;
+    }
+
+    return loginForm;
   }
 }
 

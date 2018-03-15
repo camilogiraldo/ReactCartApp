@@ -1,6 +1,8 @@
 export { 
     loginReq,
-    signupUserReq
+    signupUserReq,
+    userLoggedOutProcess,
+    authCheck
 } from './auth'
 
 export {
