@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 
 import Card, { CardContent, CardMedia } from "material-ui/Card";
-import IconButton from "material-ui/IconButton";
 import Typography from "material-ui/Typography";
-import SkipPreviousIcon from "material-ui-icons/SkipPrevious";
-import PlayArrowIcon from "material-ui-icons/PlayArrow";
-import SkipNextIcon from "material-ui-icons/SkipNext";
 import classes from "./Cart.css";
 import { connect } from "react-redux";
 import { getItemsInCartReq } from "../../Store/actions/index";
