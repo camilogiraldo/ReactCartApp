@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import Products from '../../Components/Products/Products';
-import Loader from '../../Components/Loader/Loader';
+import React, { Component } from "react";
+import Products from "../../Components/Products/Products";
+import Loader from "../../Components/Loader/Loader";
 
-import { getProductsReq } from '../../Store/actions/index';
-import { connect } from 'react-redux';
+import { getProductsReq, addItemToBuy } from "../../Store/actions/index";
+import { connect } from "react-redux";
+
 
 class HomePage extends Component {
   componentDidMount() {
@@ -28,24 +29,34 @@ class HomePage extends Component {
             productcreatedAt={el.createdAt}
             productValue={el.value}
             productStatus={el.status}
+            onBuyClicked={this.props.onBuyClicked}
+            isUserLoggedIn={this.props.isLoggedIn}
             key={el._id}
           />
         );
       });
     }
-    return <div>{products}</div>;
+    return (
+      <div>
+        {products}
+
+      </div>
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    products: state.products.products
+    products: state.products.products,
+    isLoggedIn: state.auth.isLoggedIn
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getProducts: () => dispatch(getProductsReq())
+    getProducts: () => dispatch(getProductsReq()),
+    addItemToBuy: itemId => dispatch(addItemToBuy(itemId))
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

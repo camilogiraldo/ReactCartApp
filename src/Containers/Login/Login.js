@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import classes from './Login.css';
-import { Link, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { loginReq } from '../../Store/actions/index';
+import React, { Component } from "react";
+import classes from "./Login.css";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { loginReq } from "../../Store/actions/index";
 
 class Login extends Component {
   state = {
-    email: '',
-    password: ''
+    email: "",
+    password: ""
   };
 
   handleChange = event => {
@@ -20,7 +20,6 @@ class Login extends Component {
   loginUser = event => {
     event.preventDefault();
     this.props.loginUserReq(this.state.email, this.state.password);
-    console.log(this.props);
   };
 
   render() {
@@ -51,8 +50,13 @@ class Login extends Component {
         </div>
       </div>
     );
+
     if (this.props.token) {
-      loginForm = <Redirect to="/" />;
+      if (this.props.itemToBuy) {
+        loginForm = <Redirect to={"/product/" + this.props.itemToBuy} />;
+      } else {
+        loginForm = <Redirect to="/" />;
+      }
     }
 
     return loginForm;
@@ -61,7 +65,8 @@ class Login extends Component {
 
 const mapStateToProps = state => {
   return {
-    token: state.auth.token
+    token: state.auth.token,
+    itemToBuy: state.user.itemToBuy
   };
 };
 

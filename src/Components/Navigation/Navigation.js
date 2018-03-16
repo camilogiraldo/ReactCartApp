@@ -1,41 +1,46 @@
-import React, { Component } from 'react';
-import AppBar from 'material-ui/AppBar';
-import { Link } from 'react-router-dom';
-import classes from './Navigation.css';
-import Button from 'material-ui/Button';
-import { connect } from 'react-redux';
-import { userLoggedOutProcess } from '../../Store/actions/index';
-
+import React, { Component, Fragment } from "react";
+import AppBar from "material-ui/AppBar";
+import { Link } from "react-router-dom";
+import classes from "./Navigation.css";
+import Button from "material-ui/Button";
+import { connect } from "react-redux";
+import { userLoggedOutProcess } from "../../Store/actions/index";
 
 class navigation extends Component {
-
   onLogout = () => {
     this.props.logOut();
-    console.log(this.props)
-    // this.props.history.push('/')
+    console.log(this.props);
   };
 
   render() {
-    const rightButtons = [classes.Link, classes.Right].join(' ');
+    const rightButtons = [classes.Link, classes.Right].join(" ");
+
     return (
-      <AppBar position="static">
+      <AppBar position="static" className={classes.AppBar}>
         <nav>
           <Link to="/" className={classes.Link}>
             <Button color="inherit">Home</Button>
           </Link>
-          <Link to="/cart" className={classes.Link}>
-            <Button color="inherit">Cart</Button>
-          </Link>
           {!this.props.isLoggedIn ? (
             <Link to="/login" className={rightButtons}>
-              <Button color="inherit" onClick={this.onLogout}>Login</Button>
-            </Link>
-          ) : (
-            <Link to="/" className={rightButtons}>
               <Button color="inherit" onClick={this.onLogout}>
-                Logout
+                Login
               </Button>
             </Link>
+          ) : (
+            <Fragment>
+              <Link to="/" className={rightButtons}>
+                <Button color="inherit" onClick={this.onLogout}>
+                  Logout
+                </Button>
+              </Link>
+              <Link to="/cart" className={rightButtons}>
+                <Button color="inherit">
+                  <i className="fas fa-shopping-cart" />
+                  cart
+                </Button>
+              </Link>
+            </Fragment>
           )}
           {!this.props.isLoggedIn ? (
             <Link to="/signup" className={rightButtons}>
