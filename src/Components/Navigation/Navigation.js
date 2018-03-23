@@ -6,6 +6,7 @@ import Button from "material-ui/Button";
 import { connect } from "react-redux";
 import { userLoggedOutProcess } from "../../Store/actions/index";
 
+
 class navigation extends Component {
   onLogout = () => {
     this.props.logOut();
@@ -20,6 +21,7 @@ class navigation extends Component {
           <Link to="/" className={classes.Link}>
             <Button color="inherit">Home</Button>
           </Link>
+
           {!this.props.isLoggedIn ? (
             <Link to="/login" className={rightButtons}>
               <Button color="inherit" onClick={this.onLogout}>
@@ -35,13 +37,19 @@ class navigation extends Component {
               </Link>
               <Link to="/cart" className={rightButtons}>
                 <Button color="inherit">
-                  <i className="fas fa-shopping-cart" style={{display: 'inline-block', marginRight: '0.5em'}}/>
+                  <i
+                    className="fas fa-shopping-cart"
+                    style={{ display: "inline-block", marginRight: "0.5em" }}
+                  />
                   Cart
                 </Button>
               </Link>
               <Link to="/profile" className={rightButtons}>
                 <Button color="inherit">
-                  <i class="fas fa-user" style={{display: 'inline-block', marginRight: '0.5em'}}/>
+                  <i
+                    className="fas fa-user"
+                    style={{ display: "inline-block", marginRight: "0.5em" }}
+                  />
                   <span />Profile
                 </Button>
               </Link>

@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import Stepper, { Step, StepLabel } from 'material-ui/Stepper';
-import Button from 'material-ui/Button';
-import Typography from 'material-ui/Typography';
-import classes from './Checkout.css'
+import Stepper, { Step, StepLabel } from "material-ui/Stepper";
+import Button from "material-ui/Button";
+import Typography from "material-ui/Typography";
+import classes from "./Checkout.css";
+import ContactDetails from "./ContactDetails/ContactDetails";
+import PaymentDetails from "./PaymentDetails/PaymentDetails";
+import OrderConfirmation from "./OrderConfirmation/OrderConfirmation";
 
 function getSteps() {
   return ["Contact details", "Payment details", "Order confirmation"];
@@ -11,11 +14,11 @@ function getSteps() {
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return "Contact details";
+      return <ContactDetails />;
     case 1:
-      return "Payment details";
+      return <PaymentDetails />;
     case 2:
-      return "Order Confirmation";
+      return <OrderConfirmation />;
     default:
       return "Unknown step";
   }
