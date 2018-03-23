@@ -1,3 +1,13 @@
+
+.Container {
+    width: 90%;
+    margin: auto;
+}
+.SearchBarPos {
+    margin: auto;
+    width: 50%;
+}
+
 .FloatButton {
   position: fixed;
   bottom: 10%;

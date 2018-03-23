@@ -8,7 +8,7 @@ import Button from "material-ui/Button";
 import AddIcon from "material-ui-icons/Add";
 import classes from "./HomePage.css";
 import { Link } from "react-router-dom";
-
+import SearchBar from "../SearchBar/SearchBar";
 class HomePage extends Component {
   componentDidMount() {
     //check
@@ -40,7 +40,10 @@ class HomePage extends Component {
       });
     }
     return (
-      <div>
+      <div className={classes.Container}>
+        <div className={classes.SearchBarPos}>
+          <SearchBar />
+        </div>
         {products}
         <div className={classes.FloatButton}>
           {this.props.isLoggedIn ? (
