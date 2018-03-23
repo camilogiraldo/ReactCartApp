@@ -9,10 +9,12 @@ import Product from "../../Containers/Product/Product";
 import Cart from "../Cart/Cart";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { addItemToBuy, addItemToCart } from "../../Store/actions/index";
+import { addItemToBuy, addItemToCartReq } from "../../Store/actions/index";
 import Snackbar from "material-ui/Snackbar";
 import Fade from "material-ui/transitions/Fade";
-
+import UserProfile from "../../Components/UserProfile/UserProfile";
+import checkout from "../Cart/Checkout/Checkout";
+import CreateProduct from "../../Containers/HomePage/CreateProduct/CreateProduct";
 class Home extends Component {
   state = {
     open: false
@@ -47,6 +49,9 @@ class Home extends Component {
             <Route path="/cart" component={Cart} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path="/profile" component={UserProfile} />
+            <Route path="/checkout" component={checkout} />
+            <Route path="/publish" component={CreateProduct} />
           </Switch>
           <Snackbar
             open={this.state.open}
@@ -72,7 +77,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     addItemToBuy: id => dispatch(addItemToBuy(id)),
-    addItemToCart: prodId => dispatch(addItemToCart(prodId))
+    addItemToCart: prodId => dispatch(addItemToCartReq(prodId))
   };
 };
 

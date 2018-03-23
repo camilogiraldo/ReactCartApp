@@ -4,7 +4,10 @@ import Loader from "../../Components/Loader/Loader";
 
 import { getProductsReq, addItemToBuy } from "../../Store/actions/index";
 import { connect } from "react-redux";
-
+import Button from "material-ui/Button";
+import AddIcon from "material-ui-icons/Add";
+import classes from "./HomePage.css";
+import { Link } from "react-router-dom";
 
 class HomePage extends Component {
   componentDidMount() {
@@ -39,7 +42,13 @@ class HomePage extends Component {
     return (
       <div>
         {products}
-
+        <div className={classes.FloatButton}>
+          <Link to="/publish">
+            <Button variant="fab" color="secondary" aria-label="add">
+              <AddIcon />
+            </Button>
+          </Link>
+        </div>
       </div>
     );
   }

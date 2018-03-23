@@ -8,32 +8,45 @@ export const addItemToBuy = itemId => {
   };
 };
 
-export const addItemToCart = item => {
-  return {
-    type: actionTypes.ADD_ITEM_TO_CART,
-    item: item
+export const addItemToCartReq = item => {
+  return dispatch => {
+    const headers = getHeaders();
+    console.log(headers);
+    axios
+      .post("/api/addcart/" + item, null,  { headers: headers })
+      .then(response => {
+        dispatch(getItemsInCartReq(true));
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 };
-
-const getItemsInCart = (cart) => {
+const addItemToCart = cart => {
+  return {
+    type: actionTypes.ADD_ITEM_TO_CART,
+    cart: cart
+  };
+}
+const getItemsInCart = cart => {
   return {
     type: actionTypes.GET_ITEMS_IN_CART,
     cart: cart
   };
 };
 
-export const getItemsInCartReq = () => {
+export const getItemsInCartReq = (args) => {
   return dispatch => {
     const headers = getHeaders();
-    console.log(headers);
     axios
       .get("/api/cart", { headers: headers })
       .then(response => {
-        response.data.forEach(item => {
+        if (args) {
+          dispatch(addItemToCart(response.data))
+        }else {
 
-          dispatch(getItemsInCart(item))
-        })
-        console.log('respuests',response.data);
+          dispatch(getItemsInCart(response.data));
+        }
       })
       .catch(error => {
         console.log(error);

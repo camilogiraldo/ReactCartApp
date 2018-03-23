@@ -16,12 +16,12 @@ const reducer = (state = initialState, action) => {
     case actionTypes.ADD_ITEM_TO_CART:
       return {
         ...state,
-        itemsInCart: [...state.itemsInCart, action.item]
+        itemsInCart: action.cart
       };
     case actionTypes.GET_ITEMS_IN_CART:
       return {
         ...state,
-        itemsInCart: [...state.itemsInCart, action.cart]
+        itemsInCart: action.cart
       };
     default:
       return state;

@@ -16,7 +16,7 @@ import Loader from "../../Components/Loader/Loader";
 import {
   getProductByIdReq,
   addItemToBuy,
-  addItemToCart
+  addItemToCartReq
 } from "../../Store/actions/index";
 import { connect } from "react-redux";
 import Chip from "material-ui/Chip";
@@ -36,7 +36,7 @@ class Product extends Component {
   onBuyClicked = productId => {
     if (this.props.isLoggedIn) {
       this.setState({ open: true });
-      this.props.addItemToCart(productId);
+      this.props.addItemToCart(productId._id);
     } else {
       this.props.history.push("/login");
       this.props.addItemToBuy(productId);
@@ -134,7 +134,7 @@ const mapDispatchToProps = dispatch => {
   return {
     loadProduct: id => dispatch(getProductByIdReq(id)),
     addItemToBuy: itemId => dispatch(addItemToBuy(itemId)),
-    addItemToCart: prodId => dispatch(addItemToCart(prodId))
+    addItemToCart: prodId => dispatch(addItemToCartReq(prodId))
   };
 };
 

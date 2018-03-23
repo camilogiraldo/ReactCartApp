@@ -15,7 +15,6 @@ import IconButton from "material-ui/IconButton";
 import MoreVertIcon from "material-ui-icons/MoreVert";
 
 class Products extends Component {
-
   render() {
     return (
       <Card className={classes.Card}>
@@ -50,14 +49,18 @@ class Products extends Component {
         </Link>
         <CardContent>
           <Typography variant="headline" component="h2">
-            {this.props.productValue}{" "}
+            {this.props.productValue}
             <Chip label={this.props.productStatus} className={classes.Right} />
           </Typography>
           <Typography component="p">{this.props.productDescription}</Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary" onClick={() => this.props.onBuyClicked(this.props.productId)}>
-            { this.props.isUserLoggedIn ?  'Add to cart' : 'Log in to buy' }
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => this.props.onBuyClicked(this.props.productId)}
+          >
+            {this.props.isUserLoggedIn ? "Add to cart" : "Log in to buy"}
           </Button>
           <Button size="small" color="primary">
             Share

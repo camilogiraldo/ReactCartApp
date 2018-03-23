@@ -1,4 +1,45 @@
 .Card {
-    width: 500px;
-    margin-top: 10px;
+  width: 600px;
+  margin-top: 15px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.CardCart {
+  width: 300px;
+  margin-top: 15px;
+  height: 100px;
+  float: right;
+}
+
+.Cover {
+  position: relative;
+  width: 200px !important;
+  height: 200px !important;
+  float: right;
+  border-radius: 3px;
+}
+
+.Container {
+  width: 90%;
+  margin: auto;
+}
+
+.Right {
+  float: right !important;
+  margin-right: 10px;
+}
+
+.PriceLabel {
+  width: 63%;
+  margin-top: 50px;
+}
+
+.CheckoutButton {
+  width: 100%;
+}
+
+.Link {
+  color: white;
+  text-decoration: none !important;
 }

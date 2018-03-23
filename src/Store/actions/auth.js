@@ -55,7 +55,6 @@ export const signupUser = () => {
 
 export const signupUserReq = signupData => {
   return dispatch => {
-    console.log(signupData);
     axios
       .post('api/signup', signupData, httpHeaders)
       .then(response => {
