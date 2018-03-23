@@ -43,11 +43,13 @@ class HomePage extends Component {
       <div>
         {products}
         <div className={classes.FloatButton}>
-          <Link to="/publish">
-            <Button variant="fab" color="secondary" aria-label="add">
-              <AddIcon />
-            </Button>
-          </Link>
+          {this.props.isLoggedIn ? (
+            <Link to="/publish">
+              <Button variant="fab" color="secondary" aria-label="add">
+                <AddIcon />
+              </Button>
+            </Link>
+          ) : null}
         </div>
       </div>
     );

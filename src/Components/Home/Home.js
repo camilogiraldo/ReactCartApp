@@ -14,7 +14,8 @@ import Snackbar from "material-ui/Snackbar";
 import Fade from "material-ui/transitions/Fade";
 import UserProfile from "../../Components/UserProfile/UserProfile";
 import checkout from "../Cart/Checkout/Checkout";
-import CreateProduct from "../../Containers/HomePage/CreateProduct/CreateProduct";
+import CreateProduct from "../../Containers/CreateProduct/CreateProduct";
+
 class Home extends Component {
   state = {
     open: false
