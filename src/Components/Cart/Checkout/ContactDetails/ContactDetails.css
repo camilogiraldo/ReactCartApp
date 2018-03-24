@@ -1,0 +1,13 @@
+.Input {
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+} 
+.Card {
+    width: 90%;
+    margin: auto;
+}
+.Container {
+    width: 80%;
+    margin: auto;
+    padding: 30px 0 30px 0;
+}

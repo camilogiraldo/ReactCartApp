@@ -1,0 +1,19 @@
+.ProductForm {
+  width: 50%;
+  margin: auto;
+}
+
+.Input {
+  width: 100%;
+}
+
+.ButtonFullWidth {
+  width: 100%;
+}
+
+.InputPos {
+  width: 75%;
+  margin: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}

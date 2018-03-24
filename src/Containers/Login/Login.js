@@ -3,7 +3,7 @@ import classes from "./Login.css";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginReq } from "../../Store/actions/index";
-
+import Button from "material-ui/Button";
 class Login extends Component {
   state = {
     email: "",
@@ -42,7 +42,9 @@ class Login extends Component {
               placeholder="password"
               className={classes.input}
             />
-            <button>login</button>
+            <Button type="submit" variant="raised" color="primary">
+              login
+            </Button>
             <p className={classes.message}>
               Not registered? <Link to="/signup">Create an account</Link>
             </p>

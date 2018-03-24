@@ -7,7 +7,9 @@ export {
 
 export {
     getProductsReq,
-    getProductByIdReq
+    getProductByIdReq,
+    uploadProductReq,
+    removeCreateProductRedirect
 } from './products'
 
 export {

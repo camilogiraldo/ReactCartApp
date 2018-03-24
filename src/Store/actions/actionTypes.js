@@ -5,7 +5,9 @@ export const USER_LOGGED_OUT = 'USER_LOGGED_OUT';
 export const AUTH_CHECK_USER = 'AUTH_CHECK_USER';
 
 export const GET_PRODUCTS = 'GET_PRODUCTS';
+export const PRODUCT_UPLOADED = 'PRODUCT_UPLOADED';
 export const GET_PRODUCT_BY_ID = 'GET_PRODUCT_BY_ID';
+export const REMOVE_REDIRECT = 'REMOVE_REDIRECT';
 
 export const ADD_ITEM_TO_BUY = 'ADD_ITEM_TO_BUY';
 export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART';

@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import Products from "../../Components/Products/Products";
 import Loader from "../../Components/Loader/Loader";
 
-import { getProductsReq, addItemToBuy } from "../../Store/actions/index";
+import {
+  getProductsReq,
+  addItemToBuy,
+  removeCreateProductRedirect
+} from "../../Store/actions/index";
 import { connect } from "react-redux";
 import Button from "material-ui/Button";
 import AddIcon from "material-ui-icons/Add";
@@ -12,9 +16,8 @@ import SearchBar from "../SearchBar/SearchBar";
 class HomePage extends Component {
   componentDidMount() {
     //check
-    if (!this.props.products) {
-      this.props.getProducts();
-    }
+    this.props.removeCreateProductRedirect();
+    this.props.getProducts();
   }
 
   render() {
@@ -69,7 +72,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getProducts: () => dispatch(getProductsReq()),
-    addItemToBuy: itemId => dispatch(addItemToBuy(itemId))
+    addItemToBuy: itemId => dispatch(addItemToBuy(itemId)),
+    removeCreateProductRedirect: () => dispatch(removeCreateProductRedirect())
   };
 };
 

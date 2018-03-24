@@ -119,11 +119,11 @@ class Checkout extends Component {
               <Typography className={classes.instructions}>
                 {getStepContent(activeStep)}
               </Typography>
-              <div>
+              <div className={classes.ButtonAlign}>
                 <Button
                   disabled={activeStep === 0}
                   onClick={this.handleBack}
-                  className={classes.button}
+                  className={classes.Button}
                 >
                   Back
                 </Button>
@@ -132,7 +132,7 @@ class Checkout extends Component {
                     variant="raised"
                     color="primary"
                     onClick={this.handleSkip}
-                    className={classes.button}
+                    className={classes.Button}
                   >
                     Skip
                   </Button>
@@ -141,7 +141,7 @@ class Checkout extends Component {
                   variant="raised"
                   color="primary"
                   onClick={this.handleNext}
-                  className={classes.button}
+                  className={classes.Button}
                 >
                   {activeStep === steps.length - 1 ? "Finish" : "Next"}
                 </Button>
