@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import classes from './Signup.css';
-import { signupUserReq } from '../../Store/actions/index';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import classes from "./Signup.css";
+import { signupUserReq } from "../../Store/actions/index";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 class Signup extends Component {
   state = {
-    name: '',
-    email: '',
-    password: ''
+    name: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: ""
   };
 
   onChangeHandler = event => {
@@ -20,17 +23,17 @@ class Signup extends Component {
 
   onSubmitHandler = event => {
     event.preventDefault();
-    const signupData = {
-      name: this.state.name,
-      email: this.state.email,
-      password: this.state.password
-    };
-    this.props.signupUserReq(signupData);
+    this.props.signupUserReq(this.state);
   };
 
   render() {
+    let redirectOnSignup = null;
+    if (this.props.redirectAfterSignupSuccesfull) {
+      redirectOnSignup = <Redirect to="/" />;
+    }
     return (
       <div className={classes.loginPage}>
+        {redirectOnSignup}
         <div className={classes.form}>
           <form
             className={classes.registerForm}
@@ -39,7 +42,21 @@ class Signup extends Component {
             <input
               type="text"
               placeholder="name"
+              className={classes.input}
               name="name"
+              onChange={this.onChangeHandler}
+            />
+            <input
+              type="text"
+              placeholder="First name"
+              name="firstName"
+              className={classes.input}
+              onChange={this.onChangeHandler}
+            />{" "}
+            <input
+              type="text"
+              placeholder="Last Name"
+              name="lastName"
               className={classes.input}
               onChange={this.onChangeHandler}
             />
@@ -57,6 +74,13 @@ class Signup extends Component {
               name="password"
               onChange={this.onChangeHandler}
             />
+            <input
+              type="text"
+              placeholder="location"
+              className={classes.input}
+              name="location"
+              onChange={this.onChangeHandler}
+            />
             <button>create</button>
             <p className={classes.message}>
               Already registered? <Link to="/login">Login</Link>
@@ -67,6 +91,11 @@ class Signup extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    redirectAfterSignupSuccesfull: state.auth.userCreated
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -74,4 +103,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

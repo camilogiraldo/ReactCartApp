@@ -53,6 +53,7 @@ export const signupUser = () => {
   };
 };
 
+
 export const signupUserReq = signupData => {
   return dispatch => {
     axios
@@ -60,12 +61,19 @@ export const signupUserReq = signupData => {
       .then(response => {
         //TODO
         console.log(response);
+        dispatch(signupUser())
       })
       .catch(error => {
         console.log(error);
       });
   };
 };
+
+export const signupReset =() => {
+  return {
+    type: actionTypes.SIGNUP_RESET
+  }
+}
 
 export const authCheck = () => {
   return dispatch => {

@@ -5,7 +5,8 @@ import Loader from "../../Components/Loader/Loader";
 import {
   getProductsReq,
   addItemToBuy,
-  removeCreateProductRedirect
+  removeCreateProductRedirect,
+  signupReset
 } from "../../Store/actions/index";
 import { connect } from "react-redux";
 import Button from "material-ui/Button";
@@ -18,6 +19,7 @@ class HomePage extends Component {
     //check
     this.props.removeCreateProductRedirect();
     this.props.getProducts();
+    this.props.signupReset();
   }
 
   render() {
@@ -73,7 +75,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getProducts: () => dispatch(getProductsReq()),
     addItemToBuy: itemId => dispatch(addItemToBuy(itemId)),
-    removeCreateProductRedirect: () => dispatch(removeCreateProductRedirect())
+    removeCreateProductRedirect: () => dispatch(removeCreateProductRedirect()),
+    signupReset: () => dispatch(signupReset())
   };
 };
 

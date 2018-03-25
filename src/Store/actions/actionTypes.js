@@ -3,6 +3,7 @@ export const SIGNUP_USER = 'SIGNUP_USER';
 export const USER_LOGGED_IN = 'USER_LOGGED_IN';
 export const USER_LOGGED_OUT = 'USER_LOGGED_OUT';
 export const AUTH_CHECK_USER = 'AUTH_CHECK_USER';
+export const SIGNUP_RESET = 'SIGNUP_RESET';
 
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const PRODUCT_UPLOADED = 'PRODUCT_UPLOADED';
