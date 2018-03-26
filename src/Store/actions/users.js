@@ -13,7 +13,7 @@ export const addItemToCartReq = item => {
     const headers = getHeaders();
     console.log(headers);
     axios
-      .post("/api/addcart/" + item, null,  { headers: headers })
+      .post("/api/addcart/" + item, null, { headers: headers })
       .then(response => {
         dispatch(getItemsInCartReq(true));
       })
@@ -27,7 +27,7 @@ const addItemToCart = cart => {
     type: actionTypes.ADD_ITEM_TO_CART,
     cart: cart
   };
-}
+};
 const getItemsInCart = cart => {
   return {
     type: actionTypes.GET_ITEMS_IN_CART,
@@ -35,18 +35,37 @@ const getItemsInCart = cart => {
   };
 };
 
-export const getItemsInCartReq = (args) => {
+export const getItemsInCartReq = args => {
   return dispatch => {
     const headers = getHeaders();
     axios
       .get("/api/cart", { headers: headers })
       .then(response => {
         if (args) {
-          dispatch(addItemToCart(response.data))
-        }else {
-
+          dispatch(addItemToCart(response.data));
+        } else {
+          console.log(response.data);
           dispatch(getItemsInCart(response.data));
         }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+};
+const removeItemFromCart = id => {
+  return {
+    type: actionTypes.REMOVE_ITEM_FROM_CART,
+    item: id
+  };
+};
+
+export const removeFromCartReq = id => {
+  return dispatch => {
+    axios
+      .post("/api/deletecart/" +id, null,  { headers: getHeaders() })
+      .then(response => {
+        dispatch(removeItemFromCart(id))
       })
       .catch(error => {
         console.log(error);

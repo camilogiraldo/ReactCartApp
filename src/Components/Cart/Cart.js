@@ -3,22 +3,28 @@ import Card, { CardContent, CardMedia } from "material-ui/Card";
 import Typography from "material-ui/Typography";
 import classes from "./Cart.css";
 import { connect } from "react-redux";
-import { getItemsInCartReq } from "../../Store/actions/index";
+import { getItemsInCartReq, removeFromCartReq } from "../../Store/actions/index";
 import Loader from "../Loader/Loader";
 import Chip from "material-ui/Chip";
 import Divider from "material-ui/Divider";
 import Button from "material-ui/Button";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 class Cart extends Component {
   componentDidMount() {
     this.props.getItemsInCart();
   }
 
+  removeFromCart = (id) => {
+    this.props.removeFromCart(id)
+  }
+
   render() {
     let cart = <Loader />;
+    let totalPrice = 0;
     if (this.props.itemsInCart.length !== 0) {
       cart = this.props.itemsInCart.map(item => {
+        totalPrice = totalPrice + (item.price * item.count);
         return (
           <Card key={item.createdAt} className={classes.Card}>
             <CardMedia>
@@ -43,11 +49,12 @@ class Cart extends Component {
                 <Typography variant="subheading" color="textSecondary">
                   Price: $ {item.price} x {item.count}
                 </Typography>
+                <Button variant="raised" color="secondary" onClick={() => this.removeFromCart(item._id)}>Remove</Button>
                 <div className={classes.PriceLabel}>
                   <Divider />
 
                   <Typography variant="headline">
-                    Total price: $ {item.price}
+                    Total price: $ {item.price * item.count}
                   </Typography>
                 </div>
               </CardContent>
@@ -55,6 +62,8 @@ class Cart extends Component {
           </Card>
         );
       });
+    } else {
+      cart = <h2>No items in cart</h2>
     }
     return (
       <div className={classes.Container}>
@@ -67,7 +76,7 @@ class Cart extends Component {
                 </CardMedia>
                 <Typography variant="headline">Items in Cart</Typography>
                 <Typography variant="subheading" color="textSecondary">
-                  Total:
+                  Total: $ {totalPrice}
                 </Typography>
               </CardContent>
               <Link to="/checkout" className={classes.Link}>
@@ -96,7 +105,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getItemsInCart: () => dispatch(getItemsInCartReq())
+    getItemsInCart: () => dispatch(getItemsInCartReq()),
+    removeFromCart: (id) => dispatch(removeFromCartReq(id))
   };
 };
 

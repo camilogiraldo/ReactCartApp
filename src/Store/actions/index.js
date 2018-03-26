@@ -16,5 +16,6 @@ export {
 export {
     addItemToBuy,
     addItemToCartReq,
-    getItemsInCartReq
+    getItemsInCartReq,
+    removeFromCartReq
 } from './users'
