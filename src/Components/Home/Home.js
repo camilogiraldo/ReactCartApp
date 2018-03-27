@@ -15,6 +15,7 @@ import Fade from "material-ui/transitions/Fade";
 import UserProfile from "../../Components/UserProfile/UserProfile";
 import checkout from "../Cart/Checkout/Checkout";
 import CreateProduct from "../../Containers/CreateProduct/CreateProduct";
+import UserVerification from "../UserVerification/UserVerification";
 
 class Home extends Component {
   state = {
@@ -53,6 +54,7 @@ class Home extends Component {
             <Route path="/profile" component={UserProfile} />
             <Route path="/checkout" component={checkout} />
             <Route path="/publish" component={CreateProduct} />
+            <Route path="/verify_email" component={UserVerification} />
           </Switch>
           <Snackbar
             open={this.state.open}

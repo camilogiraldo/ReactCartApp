@@ -3,7 +3,9 @@ export {
     signupUserReq,
     userLoggedOutProcess,
     authCheck,
-    signupReset
+    signupReset,
+    verifyUserReq,
+    getCountriesReq
 } from './auth'
 
 export {

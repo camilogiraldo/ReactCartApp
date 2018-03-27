@@ -42,7 +42,7 @@ class Login extends Component {
               placeholder="password"
               className={classes.input}
             />
-            <Button type="submit" variant="raised" color="primary">
+            <Button type="submit" variant="raised" color="primary" style={{ cursor: 'pointer' }}>
               login
             </Button>
             <p className={classes.message}>

@@ -1,5 +1,5 @@
-import * as actionTypes from './actionTypes';
-import axios from '../../axiosInstance';
+import * as actionTypes from "./actionTypes";
+import axios from "../../axiosInstance";
 
 export const loginUser = token => {
   return {
@@ -16,10 +16,10 @@ export const loginReq = (email, password) => {
     };
 
     axios
-      .post('api/authenticate', authData, httpHeaders)
+      .post("api/authenticate", authData, httpHeaders)
       .then(response => {
         dispatch(loginUser(response.data.token));
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem("token", response.data.token);
         dispatch(userLoggedIn());
       })
       .catch(error => {
@@ -42,7 +42,7 @@ const userLoggedOut = () => {
 
 export const userLoggedOutProcess = () => {
   return dispatch => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     dispatch(userLoggedOut());
   };
 };
@@ -53,15 +53,13 @@ export const signupUser = () => {
   };
 };
 
-
 export const signupUserReq = signupData => {
   return dispatch => {
     axios
-      .post('api/signup', signupData, httpHeaders)
+      .post("api/signup", signupData, httpHeaders)
       .then(response => {
         //TODO
-        console.log(response);
-        dispatch(signupUser())
+        dispatch(signupUser());
       })
       .catch(error => {
         console.log(error);
@@ -69,15 +67,15 @@ export const signupUserReq = signupData => {
   };
 };
 
-export const signupReset =() => {
+export const signupReset = () => {
   return {
     type: actionTypes.SIGNUP_RESET
-  }
-}
+  };
+};
 
 export const authCheck = () => {
   return dispatch => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (!token) {
       dispatch(userLoggedOut);
     } else {
@@ -87,6 +85,47 @@ export const authCheck = () => {
   };
 };
 
+export const verifyUser = token => {
+  return {
+    type: actionTypes.VERIFY_USER,
+    token: token
+  };
+};
+
+export const verifyUserReq = token => {
+  return dispatch => {
+    token = token.toString();
+    axios
+      .get("/api/verify_email?token=" + token)
+      .then(response => {
+        localStorage.setItem("token", response.data.token);
+        dispatch(verifyUser(response.data.token));
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+};
+const getCountries = countries => {
+  return {
+    type: actionTypes.GET_COUNTRIES_FILTER,
+    countries: countries
+  };
+};
+
+export const getCountriesReq = () => {
+  return dispatch => {
+    axios
+      .get("https://restcountries.eu/rest/v2/all")
+      .then(response => {
+        dispatch(getCountries(response.data));
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+};
+
 const httpHeaders = {
-  'Content-type': 'application/json'
+  "Content-type": "application/json"
 };

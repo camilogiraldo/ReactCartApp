@@ -1,9 +1,10 @@
-import * as actionTypes from '../actions/actionTypes';
+import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   token: null,
   isLoggedIn: false,
-  userCreated: false
+  userCreated: false,
+  countriesFilter: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -23,12 +24,23 @@ const reducer = (state = initialState, action) => {
         ...state,
         userCreated: false
       };
+    case actionTypes.VERIFY_USER:
+      return {
+        ...state,
+        token: action.token,
+        isLoggedIn: true
+      };
+    case actionTypes.GET_COUNTRIES_FILTER:
+      return {
+        ...state,
+        countriesFilter: action.countries
+      };
     case actionTypes.USER_LOGGED_IN:
       return {
         ...state,
-        isLoggedIn: true,
+        isLoggedIn: true
       };
-      case actionTypes.USER_LOGGED_OUT:
+    case actionTypes.USER_LOGGED_OUT:
       return {
         ...state,
         isLoggedIn: false,
