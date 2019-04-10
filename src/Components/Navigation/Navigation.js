@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
-import AppBar from "material-ui/AppBar";
+import AppBar from "@material-ui/core/AppBar";
 import { Link } from "react-router-dom";
 import classes from "./Navigation.css";
-import Button from "material-ui/Button";
+import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import { userLoggedOutProcess } from "../../Store/actions/index";
 

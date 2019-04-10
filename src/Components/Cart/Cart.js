@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import Card, { CardContent, CardMedia } from "material-ui/Card";
-import Typography from "material-ui/Typography";
+import Card, { CardContent, CardMedia } from "@material-ui/core/Card";
+import Typography from "@material-ui/core/Typography";
 import classes from "./Cart.css";
 import { connect } from "react-redux";
 import { getItemsInCartReq, removeFromCartReq } from "../../Store/actions/index";
 import Loader from "../Loader/Loader";
-import Chip from "material-ui/Chip";
-import Divider from "material-ui/Divider";
-import Button from "material-ui/Button";
+import Chip from "@material-ui/core/Chip";
+import Divider from "@material-ui/core/Divider";
+import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 
 class Cart extends Component {

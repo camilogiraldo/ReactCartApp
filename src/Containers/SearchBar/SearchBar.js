@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Input from "material-ui/Input";
+import Input from "@material-ui/core/Input";
 
 export default class SearchBar extends Component {
   render() {

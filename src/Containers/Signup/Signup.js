@@ -5,8 +5,8 @@ import { signupUserReq } from "../../Store/actions/index";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { getCountriesReq } from "../../Store/actions/index";
-import TextField from "material-ui/TextField";
-import MenuItem from "material-ui/Menu/MenuItem";
+import TextField from "@material-ui/core/TextField";
+import MenuItem from "@material-ui/core/MenuItem";
 
 class Signup extends Component {
   state = {

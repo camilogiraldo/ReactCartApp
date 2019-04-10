@@ -9,8 +9,8 @@ import {
   signupReset
 } from "../../Store/actions/index";
 import { connect } from "react-redux";
-import Button from "material-ui/Button";
-import AddIcon from "material-ui-icons/Add";
+import Button from "@material-ui/core/Button";
+import AddIcon from "@material-ui/icons/Add";
 import classes from "./HomePage.css";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";

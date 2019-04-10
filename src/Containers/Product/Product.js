@@ -5,12 +5,12 @@ import Card, {
   CardContent,
   CardMedia,
   CardHeader
-} from "material-ui/Card";
-import Button from "material-ui/Button";
-import Typography from "material-ui/Typography";
-import Avatar from "material-ui/Avatar";
-import IconButton from "material-ui/IconButton";
-import MoreVertIcon from "material-ui-icons/MoreVert";
+} from "@material-ui/core/Card";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 import classes from "./Product.css";
 import Loader from "../../Components/Loader/Loader";
 import {
@@ -19,10 +19,10 @@ import {
   addItemToCartReq
 } from "../../Store/actions/index";
 import { connect } from "react-redux";
-import Chip from "material-ui/Chip";
+import Chip from "@material-ui/core/Chip";
 
-import Snackbar from "material-ui/Snackbar";
-import Fade from "material-ui/transitions/Fade";
+import Snackbar from "@material-ui/core/Snackbar";
+import Fade from "@material-ui/core/Fade";
 
 class Product extends Component {
   state = {

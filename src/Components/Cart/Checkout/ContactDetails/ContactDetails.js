@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Card from "material-ui/Card";
+import Card from "@material-ui/core/Card";
 import classes from "./ContactDetails.css";
-import TextField from "material-ui/TextField";
-import { Divider } from "material-ui";
+import TextField from "@material-ui/core/TextField";
+import { Divider } from "@material-ui/core";
 
 export default class ContactDetails extends Component {
   state = {
